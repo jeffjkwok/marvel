@@ -15,21 +15,28 @@ router.get('/', (req,res) => {
     res.send('api works')
 });
 
-router.get('/test', (req,res) => {
+router.get('/characters', (req,res) => {
     axios.get(`${marvelAPI}/v1/public/characters?ts=${ts}&apikey=${publicKey}&hash=${hash}`)
         .then(result => {
-            console.log(result.data.data.results)
+            // console.log(result.data.data.results)
             let data = result.data.data.results;
-            let count = 0;
-            for(item of data){
-                count++
-            }
-            console.log(count)
-            // res.status(200).json(result.results);
+            res.status(200).json(data);
         })
         .catch( error => {
             res.status(500).send(error);
         });
 });
+
+router.get('/character/:id', (req,res) => {
+    console.log(req.params.id, 'request id')
+    axios.get(`${marvelAPI}/v1/public/characters/` + req.params.id + `?ts=${ts}&apikey=${publicKey}&hash=${hash}`)
+        .then(result => {
+            let data = result.data.data.results;
+            res.status(200).json(data);
+        })
+        .catch( error => {
+            res.status(500).send(error);
+        })
+})
 
 module.exports = router;
