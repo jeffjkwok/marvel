@@ -1,3 +1,30 @@
 <app-header></app-header>
-<h1>{{character.name}}</h1>
-<label for="">Description: </label> <p> {{character.description}}</p>
+
+<div *ngIf="allDataFetched">
+    <div class="profileHeader">
+        <img class="profile-image" src="{{character.thumbnail.path}}/landscape_incredible.{{character.thumbnail.extension}}" alt="">
+        <div class="nameLabel">
+            <h1>{{character.name | uppercase}}</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div>
+            <label for="">Description: </label> <p> {{character.description}}</p>
+            <label for="">Events: </label>
+            <label for="">Comics:</label>
+            <label for="">Series:</label>
+            <label for="">Related Characters:</label>
+        </div>
+        <hr>
+        <div class="comments">
+            <h3>Comments</h3>
+            <form class="commentForm" action="">
+                <div>
+                    <input class='name' type="text" placeholder="Enter Name...">
+                    <textarea class="comment" placeholder="Type your comment here:..." name=""></textarea>
+                </div>
+                <button class="submit" >Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -15,6 +15,7 @@ export class CharacterProfileComponent implements OnInit {
   private sub: any;
   id: number;
   character: any;
+  allDataFetched: boolean;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,9 +27,11 @@ export class CharacterProfileComponent implements OnInit {
       this.id = +params['id'];
       this.profileService.getCharacterProfile(this.id).subscribe(character => {
         this.character = character[0];
-        console.log('i am printing the character: ', this.character)
+        console.log(this.character);
+        this.allDataFetched = true;
       });
     })
   }
+
 
 }

@@ -1,0 +1,43 @@
+.profile-image{
+    width: 100%;
+    margin-top: -20em;
+    margin-bottom: 3em;
+    box-shadow: 1em 0em 5em black
+}
+
+.profileHeader{
+    position: relative;
+}
+
+.commentForm .name{
+    display: block;
+    width: 50%;
+    margin: 1em 0;
+}
+
+.commentForm .comment{
+    resize: none;
+    width: 50%;
+    height: 12.5em;
+    margin-bottom: 1em;
+}
+
+.commentForm .submit{
+    color: #404040;
+}
+
+input:focus, textarea:focus, button:focus{
+    outline: none;
+}
+
+.nameLabel{
+    background-color: #202020;
+    position: absolute;
+    padding: 1em;
+    bottom: 4em;
+    left: 2em;
+}
+
+.nameLabel h1{
+    margin: 0;
+}

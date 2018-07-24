@@ -8,19 +8,23 @@ import { CharactersService } from '../characters.service';
 })
 export class CharactersComponent implements OnInit {
 
+  data: any;
   characters: any = [];
   characterRows: any = [];
   allDataFetched: boolean = false;
+  pages: any;
+
 
   constructor( private charactersService: CharactersService) { }
 
   ngOnInit() {
 
     this.charactersService.loadCharacters()
-      .subscribe(characters => {
+      .subscribe(result => {
 
-        this.characters = characters;
+        this.data = result;
         this.allDataFetched = true;
+        this.characters = this.data.results;
 
         let count = 0;
         let row: any = [];
@@ -34,8 +38,10 @@ export class CharactersComponent implements OnInit {
             row = [];
           }
         }
-        // console.log(this.characterRows)
-        // console.log(this.characters, 'look at me')
+
+        let totalPages = Math.floor(this.data.total/20)
+        this.pages = Array(totalPages).fill(0).map((x, i) => i + 1);
+
       });
 
   };

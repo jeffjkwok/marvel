@@ -1,3 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 @import "~font-awesome/css/font-awesome.css";
+@import url('https://fonts.googleapis.com/css?family=Fjalla+One');
+
+/* @font-face {
+  font-family: 'KenyanCoffeeReg';
+  src: url('/assets/font/kenyan-coffee/regular.ttf') format("truetype");
+}
+
+@font-face {
+  font-family: 'KenyanCoffeeBold';
+  src: url('/assets/font/kenyan-coffee/bold.ttf') format("truetype");
+} */
+
+*{
+  font-family: 'Fjalla One';
+  color:white;
+}
+
+input{
+  color: #404040;
+}
+
+
+body{
+    background-color: #404040;
+}

@@ -14,4 +14,11 @@ export class CharactersService {
       .pipe(map(res => res));
   }
 
+  loadNewCharacters(offset){
+    return this.http.get('http://localhost:3000/api/characters' + offset)
+      .pipe(map(res => res ));
+  }
+
+
+
 }

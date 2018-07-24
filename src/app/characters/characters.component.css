@@ -1,0 +1,41 @@
+.chractersTitle{
+    margin-top: 3.5em;   
+}
+
+.charRow {
+    margin-top: .5em;
+    margin-bottom: .5em;
+    display: block;
+    text-align: center;
+}
+
+.char {
+    padding:.5em;
+    display: inline-block;
+    /* background-color: lightgrey; */
+}
+
+.charName{
+    /* font-size: .75em; */
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 0;
+}
+
+.charName a{
+    color: white;
+    font-size: .75em;
+}
+
+.charThumbnail{
+    margin-bottom: .5em;
+    box-shadow: 5px 0px 5px black;
+
+}
+
+h2{
+    text-align: center;
+    margin-top: .5em;
+    font-family: 'Fjalla One';
+    color: white
+}

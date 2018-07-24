@@ -1,17 +1,19 @@
-<h1>
-  characters works!
-</h1>
+<h2 class="chractersTitle">
+  Browse Characters
+</h2>
 
 <div *ngIf="allDataFetched" class="container">
-  <div class="row" *ngFor="let row of characterRows">
-   <div *ngFor="let char of row" style="padding:.5em">
-      <img src="{{char.thumbnail.path}}/portrait_xlarge.{{char.thumbnail.extension}}" alt="">
-      <a href="/character/{{char.id}}">{{char.name}}</a>
+  <div class="charRow" *ngFor="let row of characterRows">
+   <div class="char" *ngFor="let char of row">
+      <img class="charThumbnail" src="{{char.thumbnail.path}}/portrait_fantastic.{{char.thumbnail.extension}}" alt="">
+      <p class="charName"><a href="/character/{{char.id}}">{{char.name | uppercase}}</a></p>
    </div>
   </div>
 </div>
 
-
+<div style="text-align:center; margin-bottom: 1em;">
+  <a (click)="loadNewCharacters($event)" *ngFor=" let page of pages">{{ page + 1 }}</a>
+</div>
 <!-- <div *ngIf="allDataFetched" class="container">
   <div class="row" *ngFor="let char of characters">
     <img src="{{char.thumbnail.path}}/portrait_xlarge.{{char.thumbnail.extension}}" alt="">

@@ -20,6 +20,7 @@ const ROUTES = [
     path: 'character/:id',
     component: CharacterProfileComponent
   }
+
 ]
 
 @NgModule({
