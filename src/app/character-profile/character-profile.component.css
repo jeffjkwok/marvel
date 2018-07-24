@@ -51,3 +51,8 @@ input:focus, textarea:focus, button:focus{
 .profile-info h2 {
     margin-bottom: 1em;
 }
+
+.post{
+    border: 1px solid #4c4b4b;
+    padding: 1em;
+}

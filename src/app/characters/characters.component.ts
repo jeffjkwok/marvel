@@ -28,8 +28,10 @@ export class CharactersComponent implements OnInit {
 
         this.createCharRows();
 
-        let totalPages = Math.ceil(this.data.total/20);
-        this.pages = Array(totalPages).fill(0).map((x, i) => i);
+        if(this.data){
+          let totalPages = Math.ceil(this.data.total/20);
+          this.pages = Array(totalPages).fill(0).map((x, i) => i);
+        }
 
       });
 
@@ -50,13 +52,15 @@ export class CharactersComponent implements OnInit {
     let count = 0;
     let row: any = [];
 
-    for(let char of this.characters){
-      row.push(char)
-      count++;
-      if(count == 5 || char == this.characters[this.characters.length-1]){
-        this.characterRows.push(row);
-        count = 0;
-        row = [];
+    if(this.characters){
+      for(let char of this.characters){
+        row.push(char)
+        count++;
+        if(count == 5 || char == this.characters[this.characters.length-1]){
+          this.characterRows.push(row);
+          count = 0;
+          row = [];
+        }
       }
     }
   }

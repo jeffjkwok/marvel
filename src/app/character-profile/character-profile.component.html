@@ -46,13 +46,22 @@
         <hr>
         <div class="comments">
             <h3>Comments</h3>
-            <form class="commentForm" action="">
-                <div>
-                    <input class='name' type="text" placeholder="Enter Name...">
-                    <textarea class="comment" placeholder="Type your comment here:..." name=""></textarea>
+            <div class="commentForm">
+                <div >
+                    <input class='name' type="text" placeholder="Enter Name..." required [(ngModel)]="name">
+                    <textarea class="comment" placeholder="Type your comment here:..." required [(ngModel)]="text" ></textarea>
                 </div>
-                <button class="submit" >Submit</button>
-            </form>
+                <button class="submit" (click)="updateComments()" >Submit</button>
+            </div >
+        </div>
+        <hr>
+        <div class="postedComments">
+            <div class="post" *ngFor="let c of comments">
+                <div style="display:inline-block">
+                    <h4>{{c.name}}</h4> - <p>{{c.date}}</p>
+                </div>
+                <p>{{c.text}}</p>
+            </div>
         </div>
     </div>
 </div>

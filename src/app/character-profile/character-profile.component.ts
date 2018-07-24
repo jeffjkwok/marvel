@@ -17,6 +17,10 @@ export class CharacterProfileComponent implements OnInit {
   allDataFetched: boolean;
   medium: any;
   related: any = [];
+  comments: any = [];
+
+  name: any = "";
+  text: any = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -55,9 +59,30 @@ export class CharacterProfileComponent implements OnInit {
     this.profileService.getRelatedCharacters(this.character.id, 'comics').subscribe(result => {
       this.medium = result;
       let random = Math.floor(Math.random()*this.medium.length);
-      this.related = result[random].characters.items;
-      console.log(this.medium)
+      if(result[random]){
+        this.related = result[random].characters.items;
+      }
     })
+
+  }
+
+  updateComments(){
+
+    var tzoffset = (new Date()).getTimezoneOffset() * 60000;
+    var localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0, -1);
+
+    let comment = {
+      name: this.name,
+      text: this.text,
+      date: localISOTime
+    }
+
+    this.name = '';
+    this.text = '';
+
+    this.comments.push(comment);
+
+    this.profileService.updateComments(this.character.id, comment).subscribe(result => result);
 
   }
 

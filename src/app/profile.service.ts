@@ -19,4 +19,8 @@ export class ProfileService {
       .pipe(map( res => res ));
   };
 
+  updateComments(id, data){
+    return this.http.post('http://localhost:3000/api/character/update/'+ id , data)
+  }
+
 }
