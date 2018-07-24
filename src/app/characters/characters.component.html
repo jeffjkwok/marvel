@@ -12,7 +12,7 @@
 </div>
 
 <div style="text-align:center; margin-bottom: 1em;">
-  <a (click)="loadNewCharacters($event)" *ngFor=" let page of pages">{{ page + 1 }}</a>
+  <a (click)="loadNewCharacters($event)" *ngFor=" let page of pages" id="{{page}}" href=""> {{ page + 1 }}</a>
 </div>
 <!-- <div *ngIf="allDataFetched" class="container">
   <div class="row" *ngFor="let char of characters">

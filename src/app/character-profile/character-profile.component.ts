@@ -13,9 +13,10 @@ import { ProfileService } from '../profile.service';
 export class CharacterProfileComponent implements OnInit {
 
   private sub: any;
-  id: number;
   character: any;
   allDataFetched: boolean;
+  medium: any;
+  related: any = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -23,14 +24,40 @@ export class CharacterProfileComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+
     this.sub = this.route.params.subscribe(params => {
-      this.id = +params['id'];
-      this.profileService.getCharacterProfile(this.id).subscribe(character => {
+      let id = +params['id'];
+      this.profileService.getCharacterProfile(id).subscribe(character => {
         this.character = character[0];
-        console.log(this.character);
+        this.findRelatedCharacters();
         this.allDataFetched = true;
       });
     })
+
+  }
+
+  findRelatedCharacters(){
+    let query;
+
+    if(this.character.comics.items){
+      query = 'comics';
+    }
+    else if (this.character.series.items){
+      query = 'series';
+    }
+    else if(this.character.events.items){
+      query = 'events';
+    }
+    else if(this.character.stories.items){
+      query = 'stories';
+    }
+
+    this.profileService.getRelatedCharacters(this.character.id, 'comics').subscribe(result => {
+      this.medium = result;
+      let random = Math.floor(Math.random()*this.medium.length);
+      this.related = result[random].characters.items;
+    })
+
   }
 
 

@@ -14,4 +14,9 @@ export class ProfileService {
       .pipe(map( res => res ));
   };
 
+  getRelatedCharacters(id, query){
+    return this.http.get('http://localhost:3000/api/characters/'+ id + '/' + query)
+      .pipe(map( res => res ));
+  };
+
 }

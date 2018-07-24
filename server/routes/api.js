@@ -31,9 +31,8 @@ router.get('/characters/', (req,res) => {
 
 router.get('/characters/:offset', (req,res) => {
     let offset = req.params.offset*20;
-    axios.get(`${marvelAPI}/v1/public/characters?offset=` + req.params.offset + `&ts=${ts}&apikey=${publicKey}&hash=${hash}`)
+    axios.get(`${marvelAPI}/v1/public/characters?offset=` + offset + `&ts=${ts}&apikey=${publicKey}&hash=${hash}`)
         .then(result => {
-            // console.log(result.data.data.results)
             let data = result.data.data.results;
             res.status(200).json(data);
         })
@@ -42,8 +41,8 @@ router.get('/characters/:offset', (req,res) => {
         });
 });
 
+
 router.get('/character/:id', (req,res) => {
-    console.log(req.params.id, 'request id')
     axios.get(`${marvelAPI}/v1/public/characters/` + req.params.id + `?ts=${ts}&apikey=${publicKey}&hash=${hash}`)
         .then(result => {
             let data = result.data.data.results;
@@ -53,5 +52,16 @@ router.get('/character/:id', (req,res) => {
             res.status(500).send(error);
         })
 })
+
+router.get('/characters/:id/:query', (req,res) => {
+    axios.get(`${marvelAPI}/v1/public/characters/`+ req.params.id + `/` + req.params.query +`?ts=${ts}&apikey=${publicKey}&hash=${hash}`)
+    .then(result => {
+        let data = result.data.data.results;
+        res.status(200).json(data);
+    })
+    .catch( error => {
+        res.status(500).send(error);
+    });
+});
 
 module.exports = router;

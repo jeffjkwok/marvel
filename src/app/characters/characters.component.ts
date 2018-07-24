@@ -26,24 +26,38 @@ export class CharactersComponent implements OnInit {
         this.allDataFetched = true;
         this.characters = this.data.results;
 
-        let count = 0;
-        let row: any = [];
+        this.createCharRows();
 
-        for(let char of this.characters){
-          row.push(char)
-          count++;
-          if(count == 5){
-            this.characterRows.push(row);
-            count = 0;
-            row = [];
-          }
-        }
-
-        let totalPages = Math.floor(this.data.total/20)
-        this.pages = Array(totalPages).fill(0).map((x, i) => i + 1);
+        let totalPages = Math.ceil(this.data.total/20);
+        this.pages = Array(totalPages).fill(0).map((x, i) => i);
 
       });
 
   };
 
+  loadNewCharacters(e){
+    e.preventDefault();
+    let offset = Number(e.target.id);
+
+    this.charactersService.loadNewCharacters(offset).subscribe(result => {
+      this.characters = result;
+      this.characterRows = [];
+      this.createCharRows();
+    });
+  }
+
+  createCharRows(){
+    let count = 0;
+    let row: any = [];
+
+    for(let char of this.characters){
+      row.push(char)
+      count++;
+      if(count == 5 || char == this.characters[this.characters.length-1]){
+        this.characterRows.push(row);
+        count = 0;
+        row = [];
+      }
+    }
+  }
 }
