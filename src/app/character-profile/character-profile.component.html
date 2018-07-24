@@ -9,35 +9,35 @@
     </div>
     <div class="container">
         <div class="profile-info">
-            <h3>Description </h3>
+            <h2>Description </h2>
             <p *ngIf="character.description">{{character.description}}</p>
             <p class="notFound" *ngIf="!character.description">A DESCRIPTION FOR THIS CHARACTER COULD NOT BE FOUND</p>
             <hr>
-            <h3>Stories</h3>
+            <h2>Stories</h2>
             <p class="notFound" *ngIf="character.stories.available == 0"> THERE ARE NO AVAILABLE STORIES</p>
             <div *ngIf="character.stories.available > 0">
                 <p *ngFor = "let item of character.stories.items" > {{item.name}}</p>
             </div>
             <hr>
-            <h3>Events</h3>
+            <h2>Events</h2>
             <p class="notFound" *ngIf="character.events.available == 0"> THERE ARE NO AVAILABLE EVENTS</p>
             <div *ngIf="character.events.available > 0">
                 <p *ngFor = "let item of character.events.items" > {{item.name}}</p>
             </div>
             <hr>
-            <h3>Comics</h3>
+            <h2>Comics</h2>
             <p class="notFound" *ngIf="character.comics.available == 0"> THERE ARE NO AVAILABLE COMICS</p>
             <div *ngIf="character.comics.available > 0">
                 <p *ngFor = "let item of character.comics.items" > {{item.name}}</p>
             </div>
             <hr>
-            <h3>Series</h3>
+            <h2>Series</h2>
             <p class="notFound" *ngIf="character.series.available == 0"> THERE ARE NO AVAILABLE SERIES</p>
             <div *ngIf="character.series.available > 0">
                 <p *ngFor = "let item of character.series.items" > {{item.name}}</p>
             </div>
             <hr>
-            <h3>Related Characters</h3>
+            <h2>Related Characters</h2>
             <p class="notFound" *ngIf="character.series.available == 0">  UNABLE TO FIND RELATED CHARACTERS </p>
             <div *ngIf="related.length > 0">
                 <p *ngFor = "let item of related" > {{item.name}}</p>

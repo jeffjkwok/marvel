@@ -56,6 +56,7 @@ export class CharacterProfileComponent implements OnInit {
       this.medium = result;
       let random = Math.floor(Math.random()*this.medium.length);
       this.related = result[random].characters.items;
+      console.log(this.medium)
     })
 
   }
